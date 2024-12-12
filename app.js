@@ -22,6 +22,7 @@ mongoose
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
+  organization: {type: String, required: false}
 });
 
 const User = mongoose.model('User', userSchema);
@@ -31,8 +32,8 @@ const User = mongoose.model('User', userSchema);
 // Create a new user
 app.post('/users', async (req, res) => {
   try {
-    const { name, email } = req.body;
-    const user = new User({ name, email });
+    const { name, email, organization } = req.body;
+    const user = new User({ name, email, organization });
     await user.save();
     res.status(201).send(user);
   } catch (error) {
@@ -68,8 +69,8 @@ app.get('/users/:id', async (req, res) => {
 app.put('/users/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, email } = req.body;
-    const user = await User.findByIdAndUpdate(id, { name, email }, { new: true });
+    const { name, email, organization } = req.body;
+    const user = await User.findByIdAndUpdate(id, { name, email, organization }, { new: true });
     if (!user) {
       return res.status(404).send('User not found');
     }
