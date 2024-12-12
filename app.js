@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 const port = 3000;
-const conectString = 'mongodb+srv://abaffyacostac:yAjh2GwjRXwgIDYK@cluster0.d0mojbq.mongodb.net/UserDB?retryWrites=true&w=majority&appName=Cluster0'
+const conectString = 'mongodb+srv://abaffyacostac:yAjh2GwjRXwgIDYK@cluster0.d0mojbq.mongodb.net/UserDB-7215?retryWrites=true&w=majority&appName=Cluster0'
 
 // Middleware
 app.use(bodyParser.json());
